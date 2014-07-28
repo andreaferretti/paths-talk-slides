@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Graphics - Time for a change</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Graphics</h1>
+          <h3>Time for a change</h3>
+          <p>
+            <small>Presentation at <a href="http://milanojs.com/">Milano JS User group</a></small>
+          </p>
+        </section>
+
+        <section>
+          <section>
+            <h2>Evolution</h2>
+            <p>This is what we used to do</p>
+            <pre><code data-trim contenteditable>
+$(function() {
+  var list = $('#playground').append('ul');
+
+  cities.forEach(function(city) {
+    list.append('li')
+      .data('city', city)
+      .append('a')
+      .text(city)
+      .click(showIt);
+  });
+});
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Evolution</h2>
+            <p>...and also</p>
+            <pre><code data-trim contenteditable>
+function showIt(event) {
+  var city = $(event.target).data('city');
+  alert('You clicked on ' + city);
+  event.preventDefault();
+}
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Evolution</h2>
+            <p>This can become more declarative</p>
+            <pre><code data-trim contenteditable>
+<div id="playground">
+  <ul>
+    <li ng-repeat="city in cities">
+      <a ng-click="print(city)">{{ city }}</a>
+    </li>
+  </ul>
+</div>
+            </code></pre>
+
+            <pre><code data-trim contenteditable>
+$scope.print = function(city) {
+  alert('You clicked on ' + city);
+};
+            </code></pre>
+          </section>
+
+        </section>
+
+        <section>
+          <h2>This has not happened for graphics</h2>
+          <img src="img/d3.png" />
+        </section>
+
+        <section>
+          <section>
+            <h2>Visualization</h2>
+            <p>Today we can do a lot in the browser</p>
+            <img src="img/ex1.png" />
+          </section>
+
+          <section>
+            <h2>Visualization</h2>
+            <p>Today we can do a lot in the browser</p>
+            <img src="img/ex2.png" />
+          </section>
+
+          <section>
+            <h2>Visualization</h2>
+            <p>Today we can do a lot in the browser</p>
+            <img src="img/ex3.png" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>HTML 5!!!</h2>
+            <p>We can embed SVG inside HTML</p>
+            <img src="img/3d.png" />
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>&lt;svg width="800" height="500"&gt;</code></pre>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;rect width="200" height="200" /&gt;
+&lt;/svg&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;rect width="200" height="200" /&gt;
+  &lt;circle cx="50" cy="50" r="40" /&gt;
+&lt;/svg&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;g&gt;
+    &lt;rect width="200" height="200" /&gt;
+    &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;g&gt;
+    &lt;rect width="200" height="200" /&gt;
+    &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;/g&gt;
+  &lt;line x1="0" y1="0" x2="200" y2="200" /&gt;
+&lt;/svg&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;g&gt;
+    &lt;rect width="200" height="200" /&gt;
+    &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;/g&gt;
+  &lt;line x1="0" y1="0" x2="200" y2="200" /&gt;
+  &lt;text x="0" y="15"&gt;But the most general tag is...&lt;/text&gt;
+&lt;/svg&gt;
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;g&gt;
+    &lt;rect width="200" height="200" /&gt;
+    &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;/g&gt;
+  &lt;line x1="0" y1="0" x2="200" y2="200" /&gt;
+  &lt;path d="M 110 -85 A 140 140 0 0 1 57 97 L 24 55 A 60 60 0 0 0 48 -37 Z"/&gt;
+&lt;/svg&gt;
+            </code></pre>
+
+            <p>What?!?!?</p>
+          </section>
+        </section>
+
+
+        <section>
+          <h2>Transforms</h2>
+          <p>First, create a simple graphics, then adjust it</p>
+
+          <pre><code data-trim contenteditable>
+&lt;svg width="800" height="500"&gt;
+  &lt;g transform="rotate(90)"&gt;
+    &lt;rect width="200" height="200" /&gt;
+    &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;/g&gt;
+  &lt;g transform="scale(1.2) translate(100, 100)"&gt;
+    &lt;rect width="200" height="200" /&gt;
+    &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+            <h2>Path operations</h2>
+            <p>What was that nonsense in path?</p>
+
+            <ul>
+              <li>M = moveto</li>
+              <li>L = lineto</li>
+              <li>H = horizontal lineto</li>
+              <li>V = vertical lineto</li>
+              <li>C = curveto</li>
+              <li>S = smooth curveto</li>
+              <li>Q = quadratic Bézier curve</li>
+              <li>T = smooth quadratic Bézier curveto</li>
+              <li>A = elliptical Arc</li>
+              <li>Z = closepath</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Path operations</h2>
+            <p>What was that nonsense in path?</p>
+
+            <ul>
+              <li>M x y</li>
+              <li>L x y</li>
+              <li>H x</li>
+              <li>V y</li>
+              <li>C x1 y1 x2 y2 x y</li>
+              <li>S x2 y2 x y2</li>
+              <li>Q x1 y1 x y</li>
+              <li>T x y</li>
+              <li>A rx ry xrot large_arc_flag sweep_flag x y</li>
+              <li>Z</li>
+            </ul>
+
+            <p>Lowercase letters for relative coordinates</p>
+          </section>
+        </section>
+
+        <section>
+          <h1>THE END</h1>
+          <h3>By Andrea Ferretti</h3>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
