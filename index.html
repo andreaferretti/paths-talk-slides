@@ -130,6 +130,12 @@ $scope.print = function(city) {
 
         <section>
           <section>
+            <h2>What has allowed this?</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
             <h2>HTML 5!!!</h2>
             <p>We can embed SVG inside HTML</p>
             <img src="img/3d.png" />
@@ -281,6 +287,343 @@ $scope.print = function(city) {
 
             <p>Lowercase letters for relative coordinates</p>
           </section>
+        </section>
+
+        <section>
+          <h2>The current state of graphics in the browser</h2>
+          <ul>
+            <li>Ad hoc libraries (Highcharts, Flot, ...)</li>
+            <li>Customizable toolboxes (D3, ?)</li>
+          </ul>
+        </section>
+
+        <section>
+          <p>Most graphics libraries are not customizable enough in:</p>
+          <ul>
+            <li>Appearance</li>
+            <li>Animation</li>
+            <li>Interaction</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h2>The D3 approach</h2>
+            <p>D3 works by pairing data and elements</p>
+          </section>
+
+          <section>
+            <h2>The D3 approach</h2>
+            <p>D3 works by pairing data and DOM elements</p>
+            <p>We can first select existing DOM elements and attach data to them...</p>
+          </section>
+
+          <section>
+            <h2>The D3 approach</h2>
+            <p>D3 works by pairing data and DOM elements</p>
+            <p>We can first select existing DOM elements and attach data to them...</p>
+            <p>...or select existing data and generate associated DOM</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Example 1</h2>
+          <pre><code>
+d3.select("div.output svg")
+  .selectAll("rect") // Three existing rectangles
+  .data([127, 61, 256])
+  .attr("x", 0)
+  .attr("y", function(d,i) { return i*90+50 })
+  .attr("width", function(d,i) { return d; }) // Function of the datum
+  .attr("height", 20)
+  .style("fill", "steelblue")
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Example 2</h2>
+          <pre><code>
+d3.select("div.output svg")
+  .selectAll("rect") // No existing rectangles by now
+  .data([127, 61, 256])
+  .enter() // what's this?
+  .append("rect")
+  .attr("x", 0)
+  .attr("y", function(d,i) { return i*90+50 })
+  .attr("width", function(d,i) { return d; })
+  .attr("height", 20)
+  .style("fill", "steelblue")
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+            <h2>Stage metaphor</h2>
+            <pre><code>var selection = d3.select("rect").data([...]);</code></pre>
+          </section>
+
+          <section>
+            <h2>Stage metaphor</h2>
+            <pre><code>var selection = d3.select("rect").data([...]);</code></pre>
+            <p>The enter selection matches data not yet bound to elements</p>
+            <pre><code>
+var enter = selection.enter();
+enter.append("rect") // Now it has elements
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Stage metaphor</h2>
+            <pre><code>var selection = d3.select("rect").data([...]);</code></pre>
+            <p>The enter selection matches data not yet bound to elements</p>
+            <pre><code>
+var enter = selection.enter();
+enter.append("rect") // Now it has elements
+            </code></pre>
+            <p>The exit selection matches elements not yet bound to data</p>
+            <pre><code>
+var exit = selection.exit();
+exit.remove() // No more mismatch
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <p>The rest looks pretty much like jQuery</p>
+          <pre><code>
+selection
+  .transition()
+  .duration(3000)
+    .attr("x", 0)
+    .attr("y", function(d,i) { return i*90+50 })
+    .attr("width", function(d,i) { return d; })
+    .attr("height", 20)
+    .style("fill", "steelblue")
+    .transition()
+    .duration(3000)
+    .delay(3000)
+      .style("fill", "green")
+      .attr("width", function(d,i) {
+          return d*1.5;
+        })
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+          </section>
+
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+            <ul>
+              <li>it is as imperative as jQuery</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+            <ul>
+              <li>it is as imperative as jQuery</li>
+              <li>it is hard to imagine the final result</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+            <ul>
+              <li>it is as imperative as jQuery</li>
+              <li>it is hard to imagine the final result</li>
+              <li>pretends to have full control over the DOM</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+            <ul>
+              <li>it is as imperative as jQuery</li>
+              <li>it is hard to imagine the final result</li>
+              <li>pretends to have full control over the DOM</li>
+              <li>⇒ hard to integrate with MVC frameworks</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+            <ul>
+              <li>it is as imperative as jQuery</li>
+              <li>it is hard to imagine the final result</li>
+              <li>pretends to have full control over the DOM</li>
+              <li>⇒ hard to integrate with MVC frameworks</li>
+              <li>the stage metaphor is just weird to work with</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>D3 is very powerful and versatile, but..</p>
+            <ul>
+              <li>it is as imperative as jQuery</li>
+              <li>it is hard to imagine the final result</li>
+              <li>pretends to have full control over the DOM</li>
+              <li>⇒ hard to integrate with MVC frameworks</li>
+              <li>the stage metaphor is just weird to work with</li>
+              <li>includes <a href="https://github.com/mbostock/d3/wiki/API-Reference">everything and the kitchen sink</a> (Ajax, CSV parsing, formatting, localization, colors, time...)</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Idea 㦕!</h2>
+            <p>What if we left all the rendering to frameworks like React, Angular, Ractive?</p>
+          </section>
+
+          <section>
+            <h2>Idea 㦕!</h2>
+            <p>What if we left all the rendering to frameworks like React, Angular, Ractive?</p>
+            <p>Data binding could be used to make animations!</p>
+          </section>
+        </section>
+
+        <section>
+          <h2>Pros</h2>
+          <ul>
+            <li>Easy to visualize</li>
+            <li>Easy to style</li>
+            <li>Easy to integrate</li>
+          </ul>
+          <p>We just need a way to derive geometric shapes from the data</p>
+        </section>
+
+        <section>
+          <h2>Paths.js</h2>
+
+          <p>The path as a low level component</p>
+          <pre><code>
+var path = Path()
+  .moveto(10, 20)
+  .lineto(30, 50)
+  .lineto(25, 28)
+  .qcurveto(27, 30, 32, 27)
+  .closepath();
+var d = path.print(); // The string representation
+          </code></pre>
+          <pre><code>
+// in the template...
+&lt;path d="{{ d }}" fill="red" /&gt;
+          </code></pre>
+        </section>
+
+        <section>
+          <h2>Shapes</h2>
+          <p>Paths for common shapes can be generated from geometric data</p>
+          <pre><code>
+var rectangle = Rectangle({top: 10, bottom: 3, left: -2, right: 5 });
+var path = rectangle.path;
+var labelPosition = rectangle.centroid;
+var sector = Sector({
+  center: [10, 20],
+  r: 5,
+  R: 15,
+  start: 0,
+  end: Math.PI / 2
+});
+var path2 = sector.path;
+          </code></pre>
+        </section>
+
+        <section>
+          <section>
+            <h2>Graphs</h2>
+            <p>Collection of shapes can be derived from data</p>
+            <pre><code>
+  var pie = Pie({
+    data: [
+      { name: 'Italy', population: 59859996 },
+      ...
+    ],
+    accessor: function(x) { return x.population; }, // how to read the datum
+    center: [20, 15],
+    r: 30,
+    R: 50
+  });
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Graphs</h2>
+              <p>The template side</p>
+              <pre><code>
+&lt;svg&gt;
+{% for curve in pie.curves %}
+  &lt;path d="{ curve.sector.path.print() }" fill="{ color(curve.index) }" &gt;
+{% endfor %}
+&lt;svg&gt;
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Why should I care?</h2>
+            <ul>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Why should I care?</h2>
+            <ul>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Can still generate your own going lower level</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Why should I care?</h2>
+            <ul>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Can still generate your own going lower level</li>
+              <li>Evertyhing is an AMD module: include only what you need...</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Why should I care?</h2>
+            <ul>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Can still generate your own going lower level</li>
+              <li>Evertyhing is an AMD module: include only what you need...</li>
+              <li>...but still small if you put everything</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Why should I care?</h2>
+            <ul>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Can still generate your own going lower level</li>
+              <li>Evertyhing is an AMD module: include only what you need...</li>
+              <li>...but still small if you put everything</li>
+              <li>Only pure functions: easier to test</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Why should I care?</h2>
+            <ul>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Can still generate your own going lower level</li>
+              <li>Evertyhing is an AMD module: include only what you need...</li>
+              <li>...but still small if you put everything</li>
+              <li>Only pure functions: easier to test</li>
+              <li>Only pure functions: works on Node as well!</li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <h2>Time for live examples!</h2>
         </section>
 
         <section>
