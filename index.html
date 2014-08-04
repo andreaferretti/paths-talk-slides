@@ -53,6 +53,16 @@
         <section>
           <section>
             <h2>Evolution</h2>
+            <p>Application in the browser are starting to become</p>
+
+            <ul>
+              <li>more structured</li>
+              <li>more declarative</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Evolution</h2>
             <p>This is what we used to do</p>
             <pre><code data-trim contenteditable>
 $(function() {
@@ -499,9 +509,9 @@ selection
           <h2>Paths.js</h2>
 
           <p>The path as a low level component</p>
-          <pre><code>
-var path = Path()
-  .moveto(10, 20)
+          <pre><code class="javascript">
+var path = Path() // paths are immutable
+  .moveto(10, 20) // hence each operation returns a new path
   .lineto(30, 50)
   .lineto(25, 28)
   .qcurveto(27, 30, 32, 27)
@@ -517,10 +527,10 @@ var d = path.print(); // The string representation
         <section>
           <h2>Shapes</h2>
           <p>Paths for common shapes can be generated from geometric data</p>
-          <pre><code>
+          <pre><code class="javascript">
 var rectangle = Rectangle({top: 10, bottom: 3, left: -2, right: 5 });
 var path = rectangle.path;
-var labelPosition = rectangle.centroid;
+var labelPosition = rectangle.centroid; //useful to place labels
 var sector = Sector({
   center: [10, 20],
   r: 5,
@@ -536,7 +546,7 @@ var path2 = sector.path;
           <section>
             <h2>Graphs</h2>
             <p>Collection of shapes can be derived from data</p>
-            <pre><code>
+            <pre><code class="javascript">
   var pie = Pie({
     data: [
       { name: 'Italy', population: 59859996 },
@@ -567,14 +577,14 @@ var path2 = sector.path;
           <section>
             <h2>Why should I care?</h2>
             <ul>
-              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees...</li>
             </ul>
           </section>
 
           <section>
             <h2>Why should I care?</h2>
             <ul>
-              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees...</li>
               <li>Can still generate your own going lower level</li>
             </ul>
           </section>
@@ -582,7 +592,7 @@ var path2 = sector.path;
           <section>
             <h2>Why should I care?</h2>
             <ul>
-              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees...</li>
               <li>Can still generate your own going lower level</li>
               <li>Evertyhing is an AMD module: include only what you need...</li>
             </ul>
@@ -591,7 +601,7 @@ var path2 = sector.path;
           <section>
             <h2>Why should I care?</h2>
             <ul>
-              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees...</li>
               <li>Can still generate your own going lower level</li>
               <li>Evertyhing is an AMD module: include only what you need...</li>
               <li>...but still small if you put everything</li>
@@ -601,7 +611,7 @@ var path2 = sector.path;
           <section>
             <h2>Why should I care?</h2>
             <ul>
-              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees...</li>
               <li>Can still generate your own going lower level</li>
               <li>Evertyhing is an AMD module: include only what you need...</li>
               <li>...but still small if you put everything</li>
@@ -612,7 +622,7 @@ var path2 = sector.path;
           <section>
             <h2>Why should I care?</h2>
             <ul>
-              <li>Other graphs: bar charts, waterfall, radar charts, trees</li>
+              <li>Other graphs: bar charts, waterfall, radar charts, trees...</li>
               <li>Can still generate your own going lower level</li>
               <li>Evertyhing is an AMD module: include only what you need...</li>
               <li>...but still small if you put everything</li>
@@ -624,6 +634,18 @@ var path2 = sector.path;
 
         <section>
           <h2>Time for live examples!</h2>
+        </section>
+
+        <section>
+          <h2>But first, some links</h2>
+
+          <ul>
+            <li><a href="http://www.w3.org/TR/SVG/">SVG spec</a></li>
+            <li><a href="http://d3js.org/">D3</a></li>
+            <li><a href="https://github.com/andreaferretti/paths-js">Paths.js</a></li>
+            <li><a href="http://andreaferretti.github.io/paths-js-demo/">and its demo</a></li>
+            <li><a href="http://mlarocca.github.io/01-22-2014/pathsjs_ractive.html">A post about the ideas behind Paths.js</a></li>
+          </ul>
         </section>
 
         <section>
