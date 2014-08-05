@@ -175,7 +175,7 @@ $scope.print = function(city) {
             <pre><code data-trim contenteditable>
 &lt;svg width="800" height="500"&gt;
   &lt;rect width="200" height="200" /&gt;
-  &lt;circle cx="50" cy="50" r="40" /&gt;
+  &lt;circle cx="250" cy="250" r="40" /&gt;
 &lt;/svg&gt;
             </code></pre>
           </section>
@@ -187,7 +187,7 @@ $scope.print = function(city) {
 &lt;svg width="800" height="500"&gt;
   &lt;g&gt;
     &lt;rect width="200" height="200" /&gt;
-    &lt;circle cx="50" cy="50" r="40" /&gt;
+    &lt;circle cx="250" cy="250" r="40" /&gt;
   &lt;/g&gt;
 &lt;/svg&gt;
             </code></pre>
@@ -200,9 +200,9 @@ $scope.print = function(city) {
 &lt;svg width="800" height="500"&gt;
   &lt;g&gt;
     &lt;rect width="200" height="200" /&gt;
-    &lt;circle cx="50" cy="50" r="40" /&gt;
+    &lt;circle cx="250" cy="250" r="40" /&gt;
   &lt;/g&gt;
-  &lt;line x1="0" y1="0" x2="200" y2="200" /&gt;
+  &lt;line x1="300" y1="300" x2="200" y2="600" /&gt;
 &lt;/svg&gt;
             </code></pre>
           </section>
@@ -214,9 +214,9 @@ $scope.print = function(city) {
 &lt;svg width="800" height="500"&gt;
   &lt;g&gt;
     &lt;rect width="200" height="200" /&gt;
-    &lt;circle cx="50" cy="50" r="40" /&gt;
+    &lt;circle cx="250" cy="250" r="40" /&gt;
   &lt;/g&gt;
-  &lt;line x1="0" y1="0" x2="200" y2="200" /&gt;
+  &lt;line x1="300" y1="300" x2="200" y2="600" /&gt;
   &lt;text x="0" y="15"&gt;But the most general tag is...&lt;/text&gt;
 &lt;/svg&gt;
             </code></pre>
@@ -229,14 +229,28 @@ $scope.print = function(city) {
 &lt;svg width="800" height="500"&gt;
   &lt;g&gt;
     &lt;rect width="200" height="200" /&gt;
-    &lt;circle cx="50" cy="50" r="40" /&gt;
+    &lt;circle cx="250" cy="250" r="40" /&gt;
   &lt;/g&gt;
-  &lt;line x1="0" y1="0" x2="200" y2="200" /&gt;
-  &lt;path d="M 110 -85 A 140 140 0 0 1 57 97 L 24 55 A 60 60 0 0 0 48 -37 Z"/&gt;
+  &lt;line x1="300" y1="300" x2="200" y2="600" /&gt;
+&lt;path d="M 110 115 A 140 140 0 0 1 57 297 L 24 255 A 60 60 0 0 0 48 163 Z"/&gt;
 &lt;/svg&gt;
             </code></pre>
 
             <p>What?!?!?</p>
+          </section>
+
+          <section>
+            <h2>SVG tags</h2>
+
+            <svg width="800" height="500">
+              <g>
+                <rect width="200" height="200" fill="green" />
+                <circle cx="250" cy="250" r="40" fill="white" />
+              </g>
+              <line x1="300" y1="300" x2="200" y2="600" stroke="green" />
+              <path d="M 110 115 A 140 140 0 0 1 57 297 L 24 255 A 60 60 0 0 0 48 163 Z" fill="red" />
+            </svg>
+
           </section>
         </section>
 
