@@ -421,6 +421,37 @@ selection
 
         <section>
           <section>
+            <h2>Stage pattern</h2>
+
+            <pre><code>
+  var selection = parent.select('.foo').data(foos);
+
+  selection.enter().append('rect').attr('class', 'foo');
+
+  selection.attr('width', function(d) { return d.width; });
+
+  selection.exit().remove();
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Stage pattern</h2>
+
+            <pre><code>
+  var selection = parent.select('.foo').data(foos);
+
+  selection.enter().append('rect').attr('class', 'fop');
+  // What happens here?
+
+  selection.attr('width', function(d) { return d.width; });
+
+  selection.exit().remove();
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
             <p>D3 is very powerful and versatile, but..</p>
           </section>
 
@@ -640,11 +671,11 @@ var path2 = sector.path;
           <h2>But first, some links</h2>
 
           <ul>
-            <li><a href="http://www.w3.org/TR/SVG/">SVG spec</a></li>
-            <li><a href="http://d3js.org/">D3</a></li>
-            <li><a href="https://github.com/andreaferretti/paths-js">Paths.js</a></li>
-            <li><a href="http://andreaferretti.github.io/paths-js-demo/">and its demo</a></li>
-            <li><a href="http://mlarocca.github.io/01-22-2014/pathsjs_ractive.html">A post about the ideas behind Paths.js</a></li>
+            <li>http://www.w3.org/TR/SVG/</li>
+            <li>http://d3js.org/</li>
+            <li>https://github.com/andreaferretti/paths-js</li>
+            <li>http://andreaferretti.github.io/paths-js-demo/</li>
+            <li>http://mlarocca.github.io/01-22-2014/pathsjs_ractive.html</li>
           </ul>
         </section>
 
